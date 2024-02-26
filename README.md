@@ -44,9 +44,29 @@ pip install -r requirements.txt
 ```
 
 Then, place the KittiStereo and Cityscape datasets in the `data` folder. The datasets can be downloaded from the following links:
-* [Cityscape](https://www.cityscapes-dataset.com/downloads/)
+* Cityscape
+  * Download the image pairs from [here](https://www.cityscapes-dataset.com/downloads/). After downloading `leftImg8bit_trainvaltest.zip` and `rightImg8bit_trainvaltest.zip` to the `data` folder, run the following commands:
+  ```bash
+  mkdir cityscape_dataset
+  unzip leftImg8bit_trainvaltest.zip
+  mv leftImg8bit cityscape_dataset
+  unzip rightImg8bit_trainvaltest.zip
+  mv rightImg8bit cityscape_dataset
+  ```
   * Folder structure needs to be as follows: `data/cityscape_dataset/leftImg8bit/val` and `data/cityscape_dataset/leftImg8bit/train` (for training) and `data/cityscape_dataset/leftImg8bit/test` (for testing). Subfolders are named as city names such as berlin and munich, containing images.
-* [KittiStereo](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
+* KittiStereo
+  * Download the necessary image pairs from [KITTI 2012](http://www.cvlibs.net/download.php?file=data_stereo_flow_multiview.zip) and [KITTI 2015](http://www.cvlibs.net/download.php?file=data_scene_flow_multiview.zip). After obtaining `data_stereo_flow_multiview.zip` and `data_scene_flow_multiview.zip` in the `data` folder, run the following commands:
+  ```bash
+  unzip data_stereo_flow_multiview.zip # KITTI 2012
+  mkdir data_stereo_flow_multiview
+  mv training data_stereo_flow_multiview
+  mv testing data_stereo_flow_multiview
+
+  unzip data_scene_flow_multiview.zip # KITTI 2015
+  mkdir data_scene_flow_multiview
+  mv training data_scene_flow_multiview
+  mv testing data_scene_flow_multiview
+  ```
   * Folder structure needs to be as follows: `data/data_scene_flow_multiview/training`, `data/data_scene_flow_multiview/testing` and `data/data_stereo_flow_multiview/training`, `data/data_stereo_flow_multiview/testing` (for training, validation and testing), where subfolders are named like `image_2` and `image_3`. Text files containing paths are already in this repository (`data/KITTI_stereo_train.txt`, `data/KITTI_stereo_val.txt`, `data/KITTI_stereo_test.txt`).
 
 ## Training a Single Model on a Single Dataset and Bandwidth Ratio
