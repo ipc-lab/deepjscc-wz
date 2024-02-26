@@ -98,7 +98,7 @@ To reproduce the trainings of the methods in the paper for all figures, the foll
 
 ```
 cd src
-python train.py trainer.devices=[0] experiment=wz_train_bw
+python train.py trainer.devices=[0] experiment=wz/wz_train_bw
 ```
 
 This command will train all models in the paper and log the best checkpoints to `logs` folder.
@@ -107,7 +107,7 @@ This command will train all models in the paper and log the best checkpoints to 
 To evaluate at different signal-to-noise values, the following command can be used:
 
 ```
-python evaluate.py trainer.devices=[0] experiment=wz_eval ckpt_path=<saved checkpoint>
+python evaluate.py trainer.devices=[0] experiment=wz/wz_eval ckpt_path=<saved checkpoint>
 ```
 
 The `<saved_checkpoint` is the path to the saved checkpoint of the model to be evaluated, which is saved in the `logs` folder after training. This parameter can be multiple paths separated by a comma, each of which will be run sequentially.

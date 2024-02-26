@@ -2,7 +2,6 @@ from torch import nn
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
 from torchmetrics.image import StructuralSimilarityIndexMeasure
 from src.models.components.metrics import MultiScaleSSIM
-from src.models.components.lpips.bicubic_downsample import BicubicDownSample
 
 class MSELoss(nn.Module):
     def __init__(self, **kwargs) -> None:
