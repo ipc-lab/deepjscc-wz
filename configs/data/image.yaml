@@ -1,0 +1,6 @@
+defaults:
+  - default.yaml
+
+# Specific data
+name: ???
+_target_: src.data.image.${data.name}

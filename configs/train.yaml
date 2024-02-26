@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - _self_
+  - data: image.yaml
+  - model: deepjscc_q.yaml
+  - callbacks: default.yaml
+  - logger: mlflow
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+  - experiment: null
+  - hparams_search: null
+  - optional local: default.yaml
+  - debug: null
+
+task_name: "train"
+tags: ["${task_name}", "${data._target_}", "${model._target_}"]
+train: True
+test: True
+ckpt_path: null
+seed: 1
+benchmark: True

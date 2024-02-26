@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - override /model: base_deepjscc
+  - _self_
+
+task_name: "deepjscc-wz_train_new"
+tags: ["${task_name}", "${data._target_}", "${model._target_}", "C${model.bw_factor}"]
+
+model:
+  snr: "undefined"
+  N: 256
+  csi:
+    min: -5.0
+    max: 5.0
+
+hydra:
+  mode: "MULTIRUN"
+  sweeper:
+    params:
+      model/loss: mse_lpips
+      model.loss.lpips_weight: 1e-3
+      model._target_: src.models.wz.deepjscc_wz_baseline2.DeepJSCCWZBaseline2,src.models.wz.deepjscc_wz_baseline.DeepJSCCWZBaseline,src.models.wz.deepjscc_wz.DeepJSCCWZ,src.models.wz.deepjscc_wz_joint2.DeepJSCCWZJoint2
+      data.name: Cityscape,KittiStereo
+      model.bw_factor: 16,32

@@ -1,0 +1,28 @@
+# @package _global_
+
+task_name: "deepjscc-wz_eval-new"
+tags: ["${task_name}", "${data._target_}", "${model._target_}", "C${model.bw_factor}"]
+
+hydra:
+  mode: "MULTIRUN"
+  sweeper:
+    params:
+      ckpt_path: ???
+      model.snr: range(-5, 6)
+
+data:
+  name: null
+  num_workers: 5
+
+model:
+  snr: 0
+  bw_factor: null
+  csi:
+    min: ${model.snr}
+    max: ${model.snr}
+    train_min: ${model.csi.min}
+    train_max: ${model.csi.max}
+    val_min: ${model.csi.min}
+    val_max: ${model.csi.max}
+    test_min: ${model.csi.min}
+    test_max: ${model.csi.max}

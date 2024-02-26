@@ -1,0 +1,31 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: image.yaml
+  - model: deepjscc_q.yaml
+  - logger: mlflow
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+  - experiment: null
+  - debug: null
+
+
+task_name: "eval"
+
+tags: ["dev"]
+seed: 1
+
+replace_cfg_targets: true # replace some commonly used cfg targets with their values in the checkpoint path 
+replace_data: true
+replace_model_target: true
+
+validate: true
+test: true
+training: false
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: ???
+comet_exp: null

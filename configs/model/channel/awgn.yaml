@@ -1,0 +1,3 @@
+
+_target_: src.models.components.channels.ComplexAWGNChannel
+_partial_: true

@@ -1,0 +1,2 @@
+_target_: src.models.components.losses.SSIMLoss
+_partial_: true

@@ -1,0 +1,8 @@
+# DataBaseModule
+data_dir: ${paths.data_dir}
+num_workers: 10
+batch_size: 32
+pin_memory: True
+persistent_workers: False
+val_ratio: 0.1 # not valid for some but should work for all
+seed: ${seed}

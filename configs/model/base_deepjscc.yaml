@@ -1,0 +1,55 @@
+defaults:
+  - loss: mse
+  - channel: awgn
+  - _self_
+
+_target_: ???
+channel: ???
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.5
+  patience: 5
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.0001
+  weight_decay: 0.0
+
+power_constraint:
+  _target_: src.models.components.power_constraints.ComplexAveragePowerConstraint
+  _partial_: true
+  average_power: 1.0
+
+csi:
+  _target_: src.models.components.csi_generators.UniformCSIGenerator
+  _partial_: true
+  channel: "awgn"
+  min: ${model.snr}
+  max: ${model.snr}
+  train_min: ${model.csi.min}
+  train_max: ${model.csi.max}
+  val_min: ${model.csi.min}
+  val_max: ${model.csi.max}
+  test_min: ${model.csi.min}
+  test_max: ${model.csi.max}
+
+encoder:
+  _partial_: true
+  bw_factor: ${model.bw_factor}
+  N: ${model.N}
+
+decoder:
+  _partial_: true
+  bw_factor: ${model.bw_factor}
+  N: ${model.N}
+
+log_test_batches: 2
+
+bw_factor: ???
+snr: ???
+N: 256
+
+ckpt_path: null

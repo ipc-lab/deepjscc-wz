@@ -1,0 +1,2 @@
+_target_: src.models.components.losses.LPIPSLoss
+_partial_: true
