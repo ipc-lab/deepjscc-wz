@@ -9,7 +9,9 @@ logs2
 *.so
 #results
 .cometml-runs
-
+data/cityscape_dataset
+data/data_scene_flow_multiview
+data/data_stereo_flow_multiview
 # Distribution / packaging
 .Python
 build/
