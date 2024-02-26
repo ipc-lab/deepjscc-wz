@@ -1,9 +1,9 @@
-# Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information \[[Paper](https://arxiv.org/abs/2310.04311)\]
+# Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information (ICMLCN 2024) \[[Paper](https://arxiv.org/abs/2310.04311)\]
 This repository contains the implementation of the paper "Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information".
-![alt text](assets/visual_comparison.png)
+![Visual comparison](assets/visual_comparison.png)
 
 ## Table of Contents
-- [Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information \[Paper\]](#distributed-deep-joint-source-channel-coding-with-decoder-only-side-information-paper)
+- [Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information (ICMLCN 2024) \[Paper\]](#distributed-deep-joint-source-channel-coding-with-decoder-only-side-information-icmlcn-2024-paper)
   - [Table of Contents](#table-of-contents)
   - [Citation](#citation)
   - [Abstract](#abstract)
@@ -44,10 +44,10 @@ pip install -r requirements.txt
 ```
 
 Then, place the KittiStereo and Cityscape datasets in the `data` folder. The datasets can be downloaded from the following links:
-* [KittiStereo](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
-  * Folder structure needs to be as follows: `data/kitti_stereo_dataset/training/image_2` and `data/kitti_stereo_dataset/testing/image_2`.
 * [Cityscape](https://www.cityscapes-dataset.com/downloads/)
-  * Folder structure needs to be as follows: `data/cityscape_dataset/leftImg8bit/val` and `data/cityscape_dataset/leftImg8bit/train` (for training) and `data/cityscape_dataset/leftImg8bit/test` (for testing).
+  * Folder structure needs to be as follows: `data/cityscape_dataset/leftImg8bit/val` and `data/cityscape_dataset/leftImg8bit/train` (for training) and `data/cityscape_dataset/leftImg8bit/test` (for testing). Subfolders are named as city names such as berlin and munich, containing images.
+* [KittiStereo](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
+  * Folder structure needs to be as follows: `data/data_scene_flow_multiview/training`, `data/data_scene_flow_multiview/testing` and `data/data_stereo_flow_multiview/training`, `data/data_stereo_flow_multiview/testing` (for training, validation and testing), where subfolders are named like `image_2` and `image_3`. Text files containing paths are already in this repository (`data/KITTI_stereo_train.txt`, `data/KITTI_stereo_val.txt`, `data/KITTI_stereo_test.txt`).
 
 ## Training a Single Model on a Single Dataset and Bandwidth Ratio
 To train a single model on a single dataset and bandwidth ratio, the following command can be used:
@@ -71,7 +71,7 @@ Description of the parameters used are as follows:
   * `src.models.wz.deepjscc_wz.DeepJSCCWZ`: The `DeepJSCC-WZ-sm` model in the paper.
   * `src.models.wz.deepjscc_wz_baseline.DeepJSCCWZBaseline`: The `DeepJSCC` model in the paper.
   * `src.models.wz.deepjscc_wz_joint2.DeepJSCCWZJoint2`: The `DeepJSCC-Cond` model in the paper.
-![alt text](assets/num_parameters.png)
+![Comparison of number of parameters](assets/num_parameters.png)
 
 ## Reproducing All the Experiments on the Paper
 To reproduce the trainings of the methods in the paper for all figures, the following command can be used:
@@ -92,8 +92,6 @@ python evaluate.py trainer.devices=[0] experiment=wz_eval ckpt_path=<saved check
 
 The `<saved_checkpoint` is the path to the saved checkpoint of the model to be evaluated, which is saved in the `logs` folder after training. This parameter can be multiple paths separated by a comma, each of which will be run sequentially.
 
-
-
 ## Results
 We share evaluation results of the models in the paper in the `results` folder, containing `psnr`, `mssim` and `lpips` values for each evaluated signal-to-noise value. The results are stored in `.csv` files, where each row corresponds to a a different signal-to-noise value. The file names has the following structure: `<dataset>_<1/rho value>_{model}.csv`. Here, `<dataset>` is the dataset used for evaluation (either `KittiStereo` or `Cityscape`), `<1/rho value>` is the inverse of the signal-to-noise value (either `16` or `32`), and `{model}` is the name of the model used for evaluation. Possible values for `{model}` are indicated below along with the corresponding model in the paper:
 * `DeepJSCC-Cond`: `<dataset>_<1/rho value>_DeepJSCCWZJoint2.csv`
@@ -101,7 +99,7 @@ We share evaluation results of the models in the paper in the `results` folder, 
 * `DeepJSCC-WZ-sm`: `<dataset>_<1/rho value>_DeepJSCCWZ.csv`
 * `DeepJSCC`: `<dataset>_<1/rho value>_DeepJSCCBaseline.csv`
 
-![alt text](assets/comparison.png)
+![Quantitative comparison](assets/comparison.png)
 
 ## Notes
 This code is based on Pytorch Lightning and Hydra. We use [Lightning Hydra Template](https://github.com/ashleve/lightning-hydra-template/) as our base code. For more details on the template we use, please see the [README.md](https://github.com/ashleve/lightning-hydra-template/blob/main/README.md) of the template.
