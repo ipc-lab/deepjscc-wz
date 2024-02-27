@@ -11,6 +11,7 @@ This repository contains the implementation of the paper "Distributed Deep Joint
   - [Training a Single Model on a Single Dataset and Bandwidth Ratio](#training-a-single-model-on-a-single-dataset-and-bandwidth-ratio)
   - [Reproducing All the Experiments on the Paper](#reproducing-all-the-experiments-on-the-paper)
   - [Evaluation](#evaluation)
+  - [Checkpoints](#checkpoints)
   - [Results](#results)
   - [Notes](#notes)
 
@@ -111,6 +112,15 @@ python eval.py trainer.devices=[0] experiment=wz/wz_eval ckpt_path=<saved checkp
 ```
 
 The `<saved_checkpoint` is the path to the saved checkpoint of the model to be evaluated, which is saved in the `logs` folder after training. This parameter can be multiple paths separated by a comma, each of which will be run sequentially.
+
+## Checkpoints
+To facilitate further research and reproducibility, we share the checkpoints in [Google Drive](https://drive.google.com/drive/folders/1gXb2rQZRyVLG3n2jQny3V7q-BNDagr9M?usp=sharing). You can download the checkpoints and place them in the `checkpoints` folder.
+
+The checkpoints are stored in `.ckpt` files, where the file names has the following structure: `<dataset>_<1/rho value>_{model}.ckpt`, along with corresponding config files named `<dataset>_<1/rho value>_{model}_cfg.pt`. Here, `<dataset>` is the dataset used for training (either `KittiStereo` or `Cityscape`), `<1/rho value>` is the inverse of the signal-to-noise value (either `16` or `32`), and `{model}` is the name of the model used for training. Possible values for `{model}` are indicated below along with the corresponding model in the paper:
+  * `DeepJSCCWZBaseline2`: The `DeepJSCC-WZ` model in the paper (see result figures/tables in the paper).
+  * `DeepJSCCWZ`: The `DeepJSCC-WZ-sm` model in the paper.
+  * `DeepJSCCWZBaseline`: The `DeepJSCC` model in the paper.
+  * `DeepJSCCWZJoint2`: The `DeepJSCC-Cond` model in the paper.
 
 ## Results
 We share evaluation results of the models in the paper in the `results` folder, containing `psnr`, `mssim` and `lpips` values for each evaluated signal-to-noise value. The results are stored in `.csv` files, where each row corresponds to a a different signal-to-noise value. The file names has the following structure: `<dataset>_<1/rho value>_{model}.csv`. Here, `<dataset>` is the dataset used for evaluation (either `KittiStereo` or `Cityscape`), `<1/rho value>` is the inverse of the signal-to-noise value (either `16` or `32`), and `{model}` is the name of the model used for evaluation. Possible values for `{model}` are indicated below along with the corresponding model in the paper:
