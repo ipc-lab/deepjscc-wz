@@ -8,6 +8,8 @@ logs2
 # C extensions
 *.so
 #results
+checkpoints/*.ckpt
+checkpoints/*.pt
 .cometml-runs
 data/cityscape_dataset
 data/data_scene_flow_multiview

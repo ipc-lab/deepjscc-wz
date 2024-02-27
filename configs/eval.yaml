@@ -3,7 +3,7 @@
 defaults:
   - _self_
   - data: image.yaml
-  - model: deepjscc_q.yaml
+  - model: base_deepjscc.yaml
   - logger: mlflow
   - trainer: default.yaml
   - paths: default.yaml

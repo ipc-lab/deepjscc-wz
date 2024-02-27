@@ -7,7 +7,6 @@ hydra:
   mode: "MULTIRUN"
   sweeper:
     params:
-      ckpt_path: ???
       model.snr: range(-5, 6)
 
 data:

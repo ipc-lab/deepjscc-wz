@@ -9,7 +9,7 @@ from omegaconf import DictConfig, open_dict
 from lightning import Callback
 from lightning.pytorch.loggers import Logger
 from lightning.pytorch.utilities import rank_zero_only
-
+import os
 from src.utils import pylogger, rich_utils
 
 log = pylogger.get_pylogger(__name__)
@@ -129,6 +129,11 @@ def replace_cfg_targets(cfg):
 
     if cfg.replace_cfg_targets:
         cfg_path = Path(Path(cfg.ckpt_path).parent.parent, "cfg.pt").absolute()
+        if not os.path.exists(cfg_path):
+            new_cfg_path = cfg.ckpt_path.replace(".ckpt", "_cfg.pt")
+            
+            cfg_path = Path(new_cfg_path).absolute()
+        
         ckpt_cfg = torch.load(cfg_path, map_location="cpu")
         to_change = [
             #("model", "_target_"),

@@ -2,7 +2,7 @@
 defaults:
   - _self_
   - data: image.yaml
-  - model: deepjscc_q.yaml
+  - model: base_deepjscc.yaml
   - callbacks: default.yaml
   - logger: mlflow
   - trainer: default.yaml
