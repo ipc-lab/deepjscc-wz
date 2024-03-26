@@ -36,7 +36,7 @@ Please cite the paper if this code or paper has been useful to you:
 We consider low-latency image transmission over a noisy wireless channel when correlated side information is present only at the receiver side (the Wyner-Ziv scenario). In particular, we are interested in developing practical schemes using a data-driven joint source-channel coding approach, which has been previously shown to outperform conventional separation-based approaches in the practical finite blocklength regimes, and to provide graceful degradation with channel quality. We propose a novel neural network architecture that incorporates the decoder-only side information at multiple stages at the receiver side. Our results demonstrate that the proposed method succeeds in integrating the side information, yielding improved performance at all channel conditions in terms of the various quality measures considered here, especially at low channel signal-to-noise ratios and small bandwidth ratios. We have made the source code of the proposed method public to enable further research, and the reproducibility of the results.
 
 ## Installation
-To install environment, run the following commands after installing `torch>=1.10.0` for your specific training device ([Pytorch Installation](https://pytorch.org/get-started)):
+To install environment, run the following commands after installing `Python>=3.10` and `torch>=1.10.0` for your specific training device ([Pytorch Installation](https://pytorch.org/get-started)):
 
 ```
 git clone https://github.com/ipc-lab/deepjscc-wz.git
