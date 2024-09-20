@@ -20,16 +20,15 @@ This repository contains the implementation of the paper "Distributed Deep Joint
 Please cite the paper if this code or paper has been useful to you:
 
 ```
-@misc{yilmaz2023distributed,
-      title={Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information}, 
-      author={Selim F. Yilmaz and Ezgi Ozyilkan and Deniz Gündüz and Elza Erkip},
-      year={2023},
-      eprint={2310.04311},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url = {https://arxiv.org/abs/2310.04311},
-      howpublished = {to appear in \emph{2024 IEEE International Conference on Machine Learning for Communication and Networking}}
-}
+@INPROCEEDINGS{yilmaz2024decoderonly,
+  author={Yilmaz, Selim F. and Ozyilkan, Ezgi and Gündüz, Deniz and Erkip, Elza},
+  booktitle={2024 IEEE International Conference on Machine Learning for Communication and Networking (ICMLCN)}, 
+  title={Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={139-144},
+  doi={10.1109/ICMLCN59089.2024.10625214}}
 ```
 
 ## Abstract
