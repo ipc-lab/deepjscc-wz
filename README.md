@@ -1,5 +1,6 @@
 # Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information (ICMLCN 2024) \[[Paper](https://arxiv.org/abs/2310.04311)\]
 This repository contains the implementation of the paper "Distributed Deep Joint Source-Channel Coding with Decoder-Only Side Information".
+
 ![Visual comparison](assets/visual_comparison.png)
 
 ## Table of Contents
